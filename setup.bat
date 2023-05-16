@@ -72,10 +72,22 @@ Set extract[4]="%downloads_path%%filename[4]%" /quiet
 Set app[4]=gh.exe
 Set method[4]=Installing
 
+:: NVM for Windows
+Set item[5]=nvm
+Set link[5]=https://github.com/coreybutler/nvm-windows/releases/download/1.1.11/nvm-setup.exe
+Set filename[5]=nvm-setup.exe
+Set dir[5]=%HOMEDRIVE%\nvm\
+Set bin[5]=
+Set extract[5]="%downloads_path%%filename[5]%" /VERYSILENT /NORESTART /LOADINF="nvm.inf"
+Set app[5]=nvm.exe
+
+:: Before Setup
+mkdir %HOMEDRIVE%\nodejs
+
 :: Begin Setup
 :: https://ss64.com/nt/for_l.html
 :: Syntax: FOR /L %%parameter IN (start,step,end) DO command
-for /L %%i in (0,1,4) do (
+for /L %%i in (0,1,5) do (
 	echo [36mChecking[0m !item[%%i]!
 	echo Checking !dir[%%i]!!bin[%%i]!!app[%%i]!
 	if exist !dir[%%i]!!bin[%%i]!!app[%%i]! (

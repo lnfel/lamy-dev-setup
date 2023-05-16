@@ -1,0 +1,6 @@
+[Setup]
+Lang=english
+Dir=C:\nvm
+Group=NVM for Windows
+NoIcons=0
+Tasks=
