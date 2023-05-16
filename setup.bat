@@ -94,10 +94,22 @@ Set method[5]=Installing
 Set item[6]=soffice
 Set link[6]=https://www.libreoffice.org/donate/dl/win-x86_64/7.5.3/en-US/LibreOffice_7.5.3_Win_x86-64.msi
 Set filename[6]=LibreOffice_7.5.3_Win_x86-64.msi
-Set dir[6]=
+Set dir[6]=%ProgramFiles%\LibreOffice\program
 Set bin[6]=
 Set extract[6]="%downloads_path%%filename[6]%" /quiet
+Set app[5]=soffice.exe
 Set method[5]=Installing
+
+:: Tableplus
+:: https://tableplus.com/windows
+Set item[7]=tableplus
+Set link[7]=https://download.tableplus.com/windows/5.3.3/TablePlusSetup.exe
+Set filename[7]=TablePlusSetup.exe
+Set dir[7]=
+Set bin[7]=
+Set extract[7]=
+Set app[7]=
+Set method=[7]=
 
 :: Before Setup
 mkdir %HOMEDRIVE%\nodejs
@@ -105,7 +117,7 @@ mkdir %HOMEDRIVE%\nodejs
 :: Begin Setup
 :: https://ss64.com/nt/for_l.html
 :: Syntax: FOR /L %%parameter IN (start,step,end) DO command
-for /L %%i in (0,1,6) do (
+for /L %%i in (0,1,7) do (
 	echo [36mChecking[0m !item[%%i]!
 	echo Checking !dir[%%i]!!bin[%%i]!!app[%%i]!
 	if exist !dir[%%i]!!bin[%%i]!!app[%%i]! (

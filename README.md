@@ -31,3 +31,7 @@ Git-2.40.1-64-bit.exe /VERYSILENT /NORESTART /LOADINF="git.inf"
 
 Source: https://superuser.com/questions/944576/git-for-windows-silent-install-silent-arguments
 
+- [ ] Tableplus
+- [ ] MySQL
+- [ ] Redis
+- [ ] Setup Prisma
