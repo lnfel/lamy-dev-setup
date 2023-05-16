@@ -87,7 +87,17 @@ Set app[5]=nvm.exe
 Set method[5]=Installing
 
 :: PNPM
-:: installed using powershell, please see line 114.
+:: installed using powershell, please see "Uncommon installation setups" section below.
+
+:: Libreoffice
+:: https://www.libreoffice.org/
+Set item[6]=soffice
+Set link[6]=https://www.libreoffice.org/donate/dl/win-x86_64/7.5.3/en-US/LibreOffice_7.5.3_Win_x86-64.msi
+Set filename[6]=LibreOffice_7.5.3_Win_x86-64.msi
+Set dir[6]=
+Set bin[6]=
+Set extract[6]="%downloads_path%%filename[6]%" /quiet
+Set method[5]=Installing
 
 :: Before Setup
 mkdir %HOMEDRIVE%\nodejs
@@ -95,7 +105,7 @@ mkdir %HOMEDRIVE%\nodejs
 :: Begin Setup
 :: https://ss64.com/nt/for_l.html
 :: Syntax: FOR /L %%parameter IN (start,step,end) DO command
-for /L %%i in (0,1,5) do (
+for /L %%i in (0,1,6) do (
 	echo [36mChecking[0m !item[%%i]!
 	echo Checking !dir[%%i]!!bin[%%i]!!app[%%i]!
 	if exist !dir[%%i]!!bin[%%i]!!app[%%i]! (
