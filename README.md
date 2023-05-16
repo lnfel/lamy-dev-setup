@@ -6,6 +6,9 @@ Tools that will be installed:
 - VSCode
 - Git
 - Github CLI
+- NVM for Windows
+- PNPM
+- Libreoffice
 
 ## Just some notes for myself
 
