@@ -11,5 +11,5 @@ Tools that will be installed:
 
 Create new github repo from current directory
 ```s
-gh repo create lamy-dev-setup --public --source=. --remote=upstream
+gh repo create lamy-dev-setup --public --source=. --remote=origin
 ```
