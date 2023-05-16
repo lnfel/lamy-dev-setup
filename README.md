@@ -13,3 +13,6 @@ Create new github repo from current directory
 ```s
 gh repo create lamy-dev-setup --public --source=. --remote=origin
 ```
+
+### TODO
+- [ ] Configure git installation options during silent install.
