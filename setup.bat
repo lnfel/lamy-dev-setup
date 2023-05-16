@@ -57,12 +57,11 @@ Set link[3]=https://github.com/git-for-windows/git/releases/download/v2.40.1.win
 Set filename[3]=Git-2.40.1-64-bit.exe
 Set dir[3]=%ProgramFiles%\Git\
 Set bin[3]=bin\
-Set extract[3]="%downloads_path%%filename[3]%" /VERYSILENT /NORESTART
+Set extract[3]="%downloads_path%%filename[3]%" /VERYSILENT /NORESTART /LOADINF="git.inf"
 Set app[3]=git.exe
 Set method[3]=Installing
 
 :: Github CLI
-:: git init here: https://cli.github.com/manual/gh_repo_create
 Set item[4]=github_cli
 Set link[4]=https://github.com/cli/cli/releases/download/v2.29.0/gh_2.29.0_windows_amd64.msi
 Set filename[4]=gh_2.29.0_windows_amd64.msi
