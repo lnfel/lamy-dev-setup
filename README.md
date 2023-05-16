@@ -15,4 +15,4 @@ gh repo create lamy-dev-setup --public --source=. --remote=origin
 ```
 
 ### TODO
-- [ ] Configure git installation options during silent install.
+- [ ] Configure git installation options during silent install. (https://github.com/git-for-windows/git/wiki/Silent-or-Unattended-Installation)
