@@ -81,6 +81,9 @@ Set bin[5]=
 Set extract[5]="%downloads_path%%filename[5]%" /VERYSILENT /NORESTART /LOADINF="nvm.inf"
 Set app[5]=nvm.exe
 
+:: PNPM
+:: installed using powershell, please see line 114.
+
 :: Before Setup
 mkdir %HOMEDRIVE%\nodejs
 
@@ -107,5 +110,12 @@ for /L %%i in (0,1,5) do (
 		echo [32mInstalled[0m !item[%%i]!
 	)
 )
+
+:: Uncommon installation setups
+
+:: PNPM
+echo [33mDownloading[0m PNPM
+powershell -c "iwr https://get.pnpm.io/install.ps1 -useb | iex"
+echo [32mInstalled[0m PNPM
 
 pause
