@@ -26,6 +26,7 @@ Set app[0]=WinRAR.exe
 Set method[0]=Installing
 
 :: Hyper
+:: https://hyper.is/
 Set item[1]=hyper
 Set link[1]=https://github.com/vercel/hyper/releases/download/v3.4.1/Hyper-Setup-3.4.1.exe
 Set filename[1]=Hyper-Setup-3.4.1.exe
@@ -52,6 +53,7 @@ Set app[2]=Code.exe
 Set method[2]=Installing
 
 :: Git
+:: https://git-scm.com/
 Set item[3]=git-portable
 Set link[3]=https://github.com/git-for-windows/git/releases/download/v2.40.1.windows.1/Git-2.40.1-64-bit.exe
 Set filename[3]=Git-2.40.1-64-bit.exe
@@ -62,6 +64,7 @@ Set app[3]=git.exe
 Set method[3]=Installing
 
 :: Github CLI
+:: https://cli.github.com/
 Set item[4]=github_cli
 Set link[4]=https://github.com/cli/cli/releases/download/v2.29.0/gh_2.29.0_windows_amd64.msi
 Set filename[4]=gh_2.29.0_windows_amd64.msi
@@ -73,6 +76,7 @@ Set app[4]=gh.exe
 Set method[4]=Installing
 
 :: NVM for Windows
+:: https://github.com/coreybutler/nvm-windows
 Set item[5]=nvm
 Set link[5]=https://github.com/coreybutler/nvm-windows/releases/download/1.1.11/nvm-setup.exe
 Set filename[5]=nvm-setup.exe
@@ -114,6 +118,7 @@ for /L %%i in (0,1,5) do (
 :: Uncommon installation setups
 
 :: PNPM
+:: https://pnpm.io/installation#on-windows
 echo [33mDownloading[0m PNPM
 powershell -c "iwr https://get.pnpm.io/install.ps1 -useb | iex"
 echo [32mInstalled[0m PNPM
