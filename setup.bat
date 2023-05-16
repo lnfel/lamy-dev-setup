@@ -84,6 +84,7 @@ Set dir[5]=%HOMEDRIVE%\nvm\
 Set bin[5]=
 Set extract[5]="%downloads_path%%filename[5]%" /VERYSILENT /NORESTART /LOADINF="nvm.inf"
 Set app[5]=nvm.exe
+Set method[5]=Installing
 
 :: PNPM
 :: installed using powershell, please see line 114.
