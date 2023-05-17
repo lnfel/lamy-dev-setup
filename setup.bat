@@ -125,6 +125,8 @@ Set app[8]=mysql.exe
 Set method=[8]=Extracting
 
 :: Before Setup
+:: Scripts to run before installing dependency tools.
+echo Running preinstall scripts.
 mkdir %HOMEDRIVE%\nodejs
 
 :: Begin Setup
@@ -160,6 +162,11 @@ echo [33mDownloading[0m PNPM
 powershell -c "iwr https://get.pnpm.io/install.ps1 -useb | iex"
 echo [32mInstalled[0m PNPM
 )
+
+:: Post-install section
+:: Scripts to run after installation and setup of tools
+echo:
+echo Running postinstall scripts.
 
 :: Directory array
 Set directory[0]=%HOMEDRIVE%\mysql-8.0.33-winx64\bin
