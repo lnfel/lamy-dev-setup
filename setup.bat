@@ -181,4 +181,15 @@ for /L %%i in (0,1,0) do (
 	)
 )
 
+:: Init mysql
+:: https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization.html
+echo Initializing MySQL using: %dir[8]%%bin[8]%mysqld.exe --initialize-insecure --console
+%dir[8]%%bin[8]%mysqld.exe --initialize-insecure --console
+
+:: Start MySQL as a Windows Service
+:: https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html
+%dir[8]%%bin[8]%mysqld.exe --install
+sc start mysql
+echo Started mysql service.
+
 pause
