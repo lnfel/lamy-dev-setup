@@ -181,6 +181,10 @@ for /L %%i in (0,1,0) do (
 	)
 )
 
+:: Install nodejs lts
+%HOMEDRIVE%\nvm\nvm.exe install 18.16.0
+%HOMEDRIVE%\nvm\nvm.exe use 18.16.0
+
 :: Init mysql
 :: https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization.html
 echo Initializing MySQL using: %dir[8]%%bin[8]%mysqld.exe --initialize-insecure --console
