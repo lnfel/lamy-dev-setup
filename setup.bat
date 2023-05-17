@@ -143,8 +143,10 @@ for /L %%i in (0,1,7) do (
 
 :: PNPM
 :: https://pnpm.io/installation#on-windows
+if not exist %LOCALAPPDATA%\pnpm\pnpm.exe (
 echo [33mDownloading[0m PNPM
 powershell -c "iwr https://get.pnpm.io/install.ps1 -useb | iex"
 echo [32mInstalled[0m PNPM
+)
 
 pause
