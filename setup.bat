@@ -106,11 +106,11 @@ Set method[6]=Installing
 Set item[7]=tableplus
 Set link[7]=https://download.tableplus.com/windows/5.3.3/TablePlusSetup.exe
 Set filename[7]=TablePlusSetup.exe
-Set dir[7]=
+Set dir[7]=%ProgramFiles%\TablePlus\
 Set bin[7]=
-Set extract[7]=
-Set app[7]=
-Set method=[7]=
+Set extract[7]="%downloads_path%%filename[7]%" /VERYSILENT /NORESTART
+Set app[7]=TablePlus.exe
+Set method=[7]=Installing
 
 :: Before Setup
 mkdir %HOMEDRIVE%\nodejs
