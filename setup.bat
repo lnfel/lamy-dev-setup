@@ -112,13 +112,25 @@ Set extract[7]="%downloads_path%%filename[7]%" /VERYSILENT /NORESTART
 Set app[7]=TablePlus.exe
 Set method=[7]=Installing
 
+:: MySQL Community Server
+:: https://dev.mysql.com/downloads/installer/
+:: Web installer, https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-web-community-8.0.33.0.msi
+Set item[8]=mysql
+Set link[8]=https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.33-winx64.zip
+Set filename[8]=mysql-8.0.33-winx64.zip
+Set dir[8]=%HOMEDRIVE%\mysql-8.0.33-winx64\
+Set bin[8]=bin\
+Set extract[8]="%dir[0]%%app[0]%" x -ibck "%downloads_path%%filename[8]%" *.* %HOMEDRIVE%\
+Set app[8]=mysql.exe
+Set method=[8]=Extracting
+
 :: Before Setup
 mkdir %HOMEDRIVE%\nodejs
 
 :: Begin Setup
 :: https://ss64.com/nt/for_l.html
 :: Syntax: FOR /L %%parameter IN (start,step,end) DO command
-for /L %%i in (0,1,7) do (
+for /L %%i in (0,1,8) do (
 	echo [36mChecking[0m !item[%%i]!
 	echo Checking !dir[%%i]!!bin[%%i]!!app[%%i]!
 	if exist !dir[%%i]!!bin[%%i]!!app[%%i]! (
