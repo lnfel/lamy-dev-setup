@@ -162,7 +162,7 @@ echo [32mInstalled[0m PNPM
 )
 
 :: Directory array
-Set directory[0]=C:\Program Files\MySQL\MySQL Server 8.0\bin
+Set directory[0]=%HOMEDRIVE%\mysql-8.0.33-winx64\bin
 
 :: Add directory array to PATH
 for /L %%i in (0,1,0) do (
