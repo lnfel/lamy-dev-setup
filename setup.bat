@@ -91,14 +91,15 @@ Set method[5]=Installing
 
 :: Libreoffice
 :: https://www.libreoffice.org/
+:: Download page: https://www.libreoffice.org/donate/dl/win-x86_64/7.5.3/en-US/LibreOffice_7.5.3_Win_x86-64.msi
 Set item[6]=soffice
-Set link[6]=https://www.libreoffice.org/donate/dl/win-x86_64/7.5.3/en-US/LibreOffice_7.5.3_Win_x86-64.msi
+Set link[6]=https://download.documentfoundation.org/libreoffice/stable/7.5.3/win/x86_64/LibreOffice_7.5.3_Win_x86-64.msi
 Set filename[6]=LibreOffice_7.5.3_Win_x86-64.msi
-Set dir[6]=%ProgramFiles%\LibreOffice\program
+Set dir[6]=%ProgramFiles%\LibreOffice\program\
 Set bin[6]=
 Set extract[6]="%downloads_path%%filename[6]%" /quiet
-Set app[5]=soffice.exe
-Set method[5]=Installing
+Set app[6]=soffice.exe
+Set method[6]=Installing
 
 :: Tableplus
 :: https://tableplus.com/windows
