@@ -230,7 +230,7 @@ GOTO END_SC_QUERY
 :: https://stackoverflow.com/a/3325102
 sc query mysql | findstr /i "RUNNING" > NUL
 if !ERRORLEVEL! EQU 1 (
-sc start mysql
+    sc start mysql
 	echo [32mStarted mysql service.[0m
 ) else (
 	echo [32mmysql service running.[0m
