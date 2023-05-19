@@ -124,6 +124,18 @@ Set extract[8]="%dir[0]%%app[0]%" x -ibck "%downloads_path%%filename[8]%" *.* %H
 Set app[8]=mysql.exe
 Set method=[8]=Extracting
 
+:: Redis for Windows
+:: redis port 6379
+:: quirrel port 9181
+Set item[9]=redis
+Set link[9]=https://github.com/tporadowski/redis/releases/download/v5.0.14.1/Redis-x64-5.0.14.1.msi
+Set filename[9]=Redis-x64-5.0.14.1.msi
+Set dir[9]=%ProgramFiles%\Redis\
+Set bin[9]=
+Set extract[9]="%downloads_path%%filename[9]%" /quiet
+Set app[9]=redis-server.exe
+Set method[9]=Installing
+
 :: Before Setup
 :: Scripts to run before installing dependency tools.
 echo [33mRunning preinstall scripts.[0m
@@ -132,7 +144,7 @@ mkdir %HOMEDRIVE%\nodejs
 :: Begin Setup
 :: https://ss64.com/nt/for_l.html
 :: Syntax: FOR /L %%parameter IN (start,step,end) DO command
-for /L %%i in (0,1,8) do (
+for /L %%i in (0,1,9) do (
 	echo [36mChecking[0m !item[%%i]!
 	echo Checking !dir[%%i]!!bin[%%i]!!app[%%i]!
 	if exist !dir[%%i]!!bin[%%i]!!app[%%i]! (
@@ -170,9 +182,10 @@ echo [33mRunning postinstall scripts.[0m
 
 :: Directory array
 Set directory[0]=%HOMEDRIVE%\mysql-8.0.33-winx64\bin
+Set directory[1]=%ProgramFiles%\Redis
 
 :: Add directory array to PATH
-for /L %%i in (0,1,0) do (
+for /L %%i in (0,1,1) do (
 	echo [36mChecking[0m !directory[%%i]!
 	for /F "Skip=2Tokens=1-2*" %%A in ('Reg Query HKCU\Environment /V PATH 2^>Nul') do (
 		Set user_path=%%C
