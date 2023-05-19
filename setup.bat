@@ -126,7 +126,7 @@ Set method=[8]=Extracting
 
 :: Before Setup
 :: Scripts to run before installing dependency tools.
-echo Running preinstall scripts.
+echo [33mRunning preinstall scripts.[0m
 mkdir %HOMEDRIVE%\nodejs
 
 :: Begin Setup
@@ -166,7 +166,7 @@ echo [32mInstalled[0m PNPM
 :: Post-install section
 :: Scripts to run after installation and setup of tools
 echo:
-echo Running postinstall scripts.
+echo [33mRunning postinstall scripts.[0m
 
 :: Directory array
 Set directory[0]=%HOMEDRIVE%\mysql-8.0.33-winx64\bin
@@ -176,24 +176,64 @@ for /L %%i in (0,1,0) do (
 	echo [36mChecking[0m !directory[%%i]!
 	for /F "Skip=2Tokens=1-2*" %%A in ('Reg Query HKCU\Environment /V PATH 2^>Nul') do (
 		Set user_path=%%C
-		echo !user_path!
+		echo:
+		echo [32mPATH[0m !user_path!
 		echo !PATH! | find /C /I "!directory[%%i]!" > nul || SETX Path "!user_path!!directory[%%i]!;"
 	)
 )
 
 :: Install nodejs lts
-%HOMEDRIVE%\nvm\nvm.exe install 18.16.0
-%HOMEDRIVE%\nvm\nvm.exe use 18.16.0
+:: Reading the output of a command into a batch file variable
+:: https://devblogs.microsoft.com/oldnewthing/20120731-00/?p=7003
+:: "tokens=4"
+:: How to check the output of a command is empty in bat file?
+:: https://superuser.com/a/1723102
+for /f "delims=" %%i in ('!HOMEDRIVE!\nvm\nvm.exe install 18.16.0') do (
+    Set nvm_node_install_result=%%i
+)
+
+:: https://stackoverflow.com/questions/14954271/string-comparison-in-batch-file
+if /I "!nvm_node_install_result!" == "Version 18.16.0 is already installed." (
+	echo:
+    echo [32mNode version 18.16.0 is already installed.[0m Skipping installation.
+) else (
+    !HOMEDRIVE!\nvm\nvm.exe install 18.16.0
+    !HOMEDRIVE!\nvm\nvm.exe use 18.16.0
+)
 
 :: Init mysql
 :: https://dev.mysql.com/doc/refman/8.0/en/data-directory-initialization.html
-echo Initializing MySQL using: %dir[8]%%bin[8]%mysqld.exe --initialize-insecure --console
-%dir[8]%%bin[8]%mysqld.exe --initialize-insecure --console
+:: https://stackoverflow.com/questions/10813943/check-if-any-type-of-files-exist-in-a-directory-using-batch-script
+:: https://stackoverflow.com/a/10818854
+echo:
+echo [33mInitializing MySQL using:[0m %dir[8]%%bin[8]%mysqld.exe --initialize-insecure --console
+echo:
+dir /b /a "!HOMEDRIVE!\mysql-8.0.33-winx64\data\*" | >nul findstr "^" && (echo [32mMySQL already initialized.[0m) || (%dir[8]%%bin[8]%mysqld.exe --initialize-insecure --console)
 
 :: Start MySQL as a Windows Service
 :: https://dev.mysql.com/doc/refman/8.0/en/windows-start-service.html
+:: How does one find out if a Windows service is installed using (preferably) only batch?
+:: https://stackoverflow.com/questions/3883099/how-does-one-find-out-if-a-windows-service-is-installed-using-preferably-only
+sc query mysql > NUL
+if ERRORLEVEL 1060 GOTO SERVICE_NOT_INSTALLED
+echo [32mmysql service already installed.[0m
+GOTO END_SC_QUERY
+
+:SERVICE_NOT_INSTALLED
+::echo mysql service not found.
 %dir[8]%%bin[8]%mysqld.exe --install
+
+:END_SC_QUERY
+
+:: How to check if a service is running via batch file and start it, if it is not running?
+:: https://stackoverflow.com/questions/3325081/how-to-check-if-a-service-is-running-via-batch-file-and-start-it-if-it-is-not-r
+:: https://stackoverflow.com/a/3325102
+sc query mysql | findstr /i "RUNNING" > NUL
+if !ERRORLEVEL! EQU 1 (
 sc start mysql
-echo Started mysql service.
+	echo [32mStarted mysql service.[0m
+) else (
+	echo [32mmysql service running.[0m
+)
 
 pause
