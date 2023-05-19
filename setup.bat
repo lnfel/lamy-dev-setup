@@ -127,12 +127,15 @@ Set method=[8]=Extracting
 :: Redis for Windows
 :: redis port 6379
 :: quirrel port 9181
+:: https://docs.memurai.com/en/installation.html
 Set item[9]=redis
 Set link[9]=https://github.com/tporadowski/redis/releases/download/v5.0.14.1/Redis-x64-5.0.14.1.msi
+::Set link[9]=https://download.memurai.com/Memurai-Developer/4.0.1/Memurai-Developer-v4.0.1.msi?Expires=1684673693&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kb3dubG9hZC5tZW11cmFpLmNvbS9NZW11cmFpLURldmVsb3Blci80LjAuMS9NZW11cmFpLURldmVsb3Blci12NC4wLjEubXNpIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjg0NjczNjkzfX19XX0_&Signature=pauOJ1zSPE08Xmjw-WR5SpUVcMDcpiF1HmalB92oaZ0QIhHu1gRKvdU4zYCUkUCj1J6VzJ6Ct5nvD0I7J~N0OOMKjdNMhHe9wycu~FfANOBfEpkjXTsGeQIQSSKC8Ro05YXfywgMuqqYLg8-KTi78XtDVr2qkACwMUVw-FF8~aLe2fev2DFQPcmLp1jYRR1cLMaUI3-TqQp8pSdP2vFHnQw7A-Qwmdt0f1zAwcPsRx3nsWzXd~p9c8P8vlJkbZDnUqQHPC-Iqcs4BW83W5ATSg-NAvGCVu-2HdJpl8jr5ljIUUfmwsa5HSZEVI5YhkspuWqi1ppnOSwk1d8Gs3W-MQ__&Key-Pair-Id=APKAIDFA66QZFFUHPRFQ
 Set filename[9]=Redis-x64-5.0.14.1.msi
 Set dir[9]=%ProgramFiles%\Redis\
 Set bin[9]=
-Set extract[9]="%downloads_path%%filename[9]%" /quiet
+::Set extract[9]="%downloads_path%%filename[9]%" /quiet
+Set extract[9]=msiexec /quiet /i %downloads_path%%filename[9]% PORT=9181
 Set app[9]=redis-server.exe
 Set method[9]=Installing
 
