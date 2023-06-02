@@ -9,6 +9,9 @@ Tools that will be installed:
 - NVM for Windows
 - PNPM
 - Libreoffice
+- MySQL Community Server
+- Redis for windows
+- Tableplus
 
 ## Just some notes for myself
 
@@ -38,5 +41,5 @@ Source: https://superuser.com/questions/944576/git-for-windows-silent-install-si
 
 - [x] Tableplus
 - [x] MySQL
-- [ ] Redis
-- [ ] Setup Prisma
+- [x] Redis
+- [x] Setup Prisma
