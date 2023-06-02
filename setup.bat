@@ -256,4 +256,8 @@ if !ERRORLEVEL! EQU 1 (
 	echo [32mmysql service running.[0m
 )
 
+:: Hyper config
+powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1114085891686797373/1114096474872090624/lyco-reco.png' -OutFile '%downloads_path%lyco-reco.png'"
+copy /y .hyper.js %APPDATA%\Hyper\.hyper.js
+
 pause
