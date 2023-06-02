@@ -186,15 +186,19 @@ echo [33mRunning postinstall scripts.[0m
 :: Directory array
 Set directory[0]=%HOMEDRIVE%\mysql-8.0.33-winx64\bin
 Set directory[1]=%ProgramFiles%\Redis
+:: Re-add NVM paths since the installer does not add semi-colon when adding NVM_HOME to path
+Set directory[2]=%HOMEDRIVE%\nvm
+Set directory[3]=%ProgramFiles%\nodejs
 
 :: Add directory array to PATH
-for /L %%i in (0,1,1) do (
+for /L %%i in (0,1,3) do (
 	echo [36mChecking[0m !directory[%%i]!
 	for /F "Skip=2Tokens=1-2*" %%A in ('Reg Query HKCU\Environment /V PATH 2^>Nul') do (
 		Set user_path=%%C
 		echo:
 		echo [32mPATH[0m !user_path!
-		echo !PATH! | find /C /I "!directory[%%i]!" > nul || SETX Path "!user_path!!directory[%%i]!;"
+		:: Make sure we find the directory path between semi-colons
+		echo !PATH! | find /C /I ";!directory[%%i]!;" > nul || SETX Path "!user_path!!directory[%%i]!;"
 	)
 )
 
