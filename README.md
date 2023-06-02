@@ -17,6 +17,11 @@ Create new github repo from current directory (must be a git repo first)
 gh repo create lamy-dev-setup --public --source=. --remote=origin
 ```
 
+Encoding using certutil
+```s
+certutil -encode file file_base64
+```
+
 ### TODO
 - [x] Configure git installation options during silent install. (https://github.com/git-for-windows/git/wiki/Silent-or-Unattended-Installation)
 
