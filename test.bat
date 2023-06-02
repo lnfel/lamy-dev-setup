@@ -52,4 +52,16 @@ if !ERRORLEVEL! EQU 1 (
     sc start mysql
 )
 
+:: https://serverfault.com/questions/1119066/generate-sha256-hash-of-a-string-from-windows-command-line
+:: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/certutil
+:: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/find
+:: https://www.ired.team/offensive-security/defense-evasion/t1140-encode-decode-data-with-certutil
+:: https://stackoverflow.com/questions/9524239/save-output-from-find-command-to-variable
+:: https://stackoverflow.com/questions/8898088/single-line-for-statement-i-unexpected-at-this-time
+:: for /f "delims=" %%i in ('certutil -decode efile_base64 efile_decode ^> nul ^| findstr /v "hash" efile_decode') do SET sample=%%i
+certutil -decode efile_base64 efile_decode > nul
+for /f "delims=" %%i in ('findstr /v "hash" efile_decode') do SET sample=%%i
+
+echo Sample: %sample%
+
 pause
