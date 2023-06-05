@@ -59,9 +59,25 @@ if !ERRORLEVEL! EQU 1 (
 :: https://stackoverflow.com/questions/9524239/save-output-from-find-command-to-variable
 :: https://stackoverflow.com/questions/8898088/single-line-for-statement-i-unexpected-at-this-time
 :: for /f "delims=" %%i in ('certutil -decode efile_base64 efile_decode ^> nul ^| findstr /v "hash" efile_decode') do SET sample=%%i
-certutil -decode efile_base64 efile_decode > nul
-for /f "delims=" %%i in ('findstr /v "hash" efile_decode') do SET sample=%%i
+::certutil -decode efile_base64 efile_decode > nul
+::for /f "delims=" %%i in ('findstr /v "hash" efile_decode') do SET sample=%%i
 
-echo Sample: %sample%
+::echo Sample: %sample%
+
+:: https://stackoverflow.com/questions/21289762/remove-unwanted-path-name-from-path-variable-via-batch
+::SETX PATH "%PATH:*NVM_SYMLINK*C:\mysql-8.0.33-winx64\bin;=%"
+
+::powershell -c "$path = $Env:Path"
+::powershell -c "$newpath = $path.replace('%%NVM_SYMLINK%%C:\mysql-8.0.33-winx64\bin;','')"
+::powershell -c "$env:Path = $newpath"
+
+
+:: Replace C:\Program Files\nodejsC:\mysql-8.0.33-winx64\bin with a blank string, removing it from PATH
+:: https://ss64.com/nt/syntax-replace.html
+SET old_path=%PATH%
+echo %old_path%
+SETX PATH "%old_path:C:\Program Files\nodejsC:\mysql-8.0.33-winx64\bin=%"
+
+:: SETX PATH "C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\GitHub CLI\;C:\nvm;C:\Program Files\nodejs;C:\Program Files\GitHub CLI\;C:\Users\Administrator\AppData\Local\pnpm;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;%%NVM_SYMLINK%%C:\mysql-8.0.33-winx64\bin;C:\Program Files\Redis;C:\Users\Administrator\AppData\Local\Programs\Hyper\resources\bin;"
 
 pause
