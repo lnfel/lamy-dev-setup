@@ -272,6 +272,7 @@ if !ERRORLEVEL! EQU 1 (
 if not exist %downloads_path%lyco-reco.png (
 	echo [33mSyncing Hyper config.[0m
 	powershell -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1114085891686797373/1114096474872090624/lyco-reco.png' -OutFile '%downloads_path%lyco-reco.png'"
+	mkdir %APPDATA%\Hyper
 	copy /y .hyper.js %APPDATA%\Hyper\.hyper.js
 ) else (
 	echo [32mHyper config already synced.[0m
