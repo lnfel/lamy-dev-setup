@@ -192,7 +192,7 @@ if not !new_path! == !old_path! (
 	echo Removing %NVM_SYMLINK%C:\mysql-8.0.33-winx64\bin from PATH
 	SETX Path "!new_path!;"
 ) else (
-	echo [36m%NVM_SYMLINK%C:\mysql-8.0.33-winx64\bin not found in PATH, skipping PATH modification.[0m
+	echo [36m%%NVM_SYMLINK%%C:\mysql-8.0.33-winx64\bin not found in PATH, skipping PATH modification.[0m
 )
 
 :: Directory array
